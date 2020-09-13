@@ -155,7 +155,6 @@
         - if user_signed_in?
           .login__btn
             =link_to "マイページ","/users/#{current_user.id}"
-            =link_to "ログアウト", destroy_user_session_path, method: :delete
         - else
           .registration__btn
             =link_to "ログイン",new_user_session_path, method: :get

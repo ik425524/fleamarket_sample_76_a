@@ -147,12 +147,14 @@ a {
               border-radius: 20px;
               width: 130px;
               color: #3ccace;
+              cursor: pointer;
             }
 
             &__right {
               border: 1px black solid;
               border-radius: 5px;
               width: 160px;
+              cursor: pointer;
             }
           }
         }
@@ -188,6 +190,7 @@ a {
             border-radius: 100px;
             font-size: 20px;
             margin-top: 10px;
+            cursor: pointer;
           }
         }
       }

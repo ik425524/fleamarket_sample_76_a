@@ -50,7 +50,7 @@
         =link_to "電話番号の確認",'/#'
         %i.icon-arrow
       %li
-        = link_to 'ログアウト','/users/show'
+        = link_to 'ログアウト','/users'
         %i.icon-arrow
   .mypage__side__right
     = link_to '/#' do
@@ -58,7 +58,7 @@
         .mypage__user__content
           = image_tag "icon/member_photo_noimage_thumb.png",class: "mypage__user__img"
         .mypage__name
-          = current_user.name
+          = current_user.nickname
         .mypage__number
           .mypage__number__assessment
             評価０

@@ -12,6 +12,13 @@ Rails.application.routes.draw do
 
   root to: 'posts#index'
   get 'confirm', to: 'posts#confirm'
+  resources :products do
+    collection do
+      get 'get_category_children', defaults: { fomat: 'json'}
+      get 'get_category_grandchildren', defaults: { fomat: 'json'}
+    end
+  end
+
   resources :users, only: [:index, :show, :new, :create]
   resources :products, only: [:index, :new, :create]
   resources :card, only: [:new, :show] do
@@ -23,3 +30,4 @@ Rails.application.routes.draw do
   end
 
 end
+
