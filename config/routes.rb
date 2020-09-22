@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'purchase/index'
+  get 'purchase/done'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -11,7 +13,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'posts#index'
-  get 'confirm', to: 'posts#confirm'
   resources :products do
     collection do
       get 'get_category_children', defaults: { fomat: 'json'}
@@ -19,8 +20,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:index, :show, :new, :create]
-  resources :products, only: [:index, :new, :create]
+  resources :posts, only: [:index]
+  resources :users, only: [:index, :show]
+  resources :products
   resources :card, only: [:new, :show] do
     collection do
       post 'show', to: 'card#show'
@@ -28,6 +30,11 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
-
+  resources :purchase, only: [:show] do
+    member do
+      post 'pay', to: 'purchase#pay'
+      get 'done', to: 'purchase#done'
+    end
+  end
 end
 

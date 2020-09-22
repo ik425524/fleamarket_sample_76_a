@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_parents, only: [:new, :create, :edit]
+  before_action :set_product, only: [:destroy, :edit, :show]
 
   def index
     @products = Product.includes(:images).order('created_at DESC')
@@ -17,6 +18,17 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    if user_signed_in? && current_user.id == @product.user_id
+      @product.destroy
+    else
+      redirect_to root_path, alert: "削除に失敗しました"
+    end
+  end
+
+  def edit
   end
 
   def show
@@ -41,5 +53,7 @@ class ProductsController < ApplicationController
     @category_parents = Category.where(ancestry: nil)
   end
 
-
+  def set_product
+    @product = Product.find(params[:id])
+  end
 end

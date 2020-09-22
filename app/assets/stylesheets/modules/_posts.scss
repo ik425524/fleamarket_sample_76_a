@@ -349,37 +349,57 @@ a {
       text-align: center;
     }
     .container__box__lists {
-      width: 780px;
+      width: 100%;
       margin: 26px auto;
       display: flex;
-      justify-content: space-around;
+      overflow: scroll;
 
-      .container__box__list {
-        width: 220px;
-
-        .list__image {
+      .relatedlist{
+        width: 700px;
+        height: 300px;
+        font-size: 20px;
+        margin: 0 auto;
+        color: #3ccace;
+        text-align: start;
+  
+  
+        .related_images {
           width: 220px;
-          height: 150px;
-          object-fit: cover;
-        }
-        .list__body {
-          background-color: white;
-          color: #333;
-          padding: 16px;
+          padding-top: 10px;
+          color: black;
+          font-size: 16px;
+          text-align: center;
+          padding-top: 20px;
+          display: flex;
 
-          &__name {
-            overflow: hidden;
-            line-height: 1.5;
-            font-size: 16px;
-          }
-          ul {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          }
-          p {
-            font-size: 10px;
-            text-align: left;
+          .container__box__list {
+            width: 220px;
+
+            .list__image {
+              width: 220px;
+              height: 150px;
+              object-fit: cover;
+            }
+            .list__body {
+              background-color: white;
+              color: #333;
+              padding: 16px;
+
+              &__name {
+                overflow: hidden;
+                line-height: 1.5;
+                font-size: 16px;
+              }
+              ul {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              }
+              p {
+                font-size: 10px;
+                text-align: left;
+              }
+            }
           }
         }
       }

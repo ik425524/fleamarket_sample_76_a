@@ -1,3 +1,5 @@
+.wrapper
+  = render "posts/header"
 .main_nav
   .main_nav__list
     = link_to "FURIMA",'/#'
@@ -12,11 +14,11 @@
   .main_nav__next
     >
   .main_nav__list
-    = link_to "ジャンル",'/#'
+    = link_to(@product.category.name)
   .main_nav__next
     >
   .main_nav__list
-    今いるページ
+    = @product.name
 
 .main
   .showmain
@@ -24,20 +26,16 @@
       .product__top
         .product_box
           .product_box__name
-            商品名
-          .product_box__images
-            .product_box__main_image
-              = image_tag "pict/beef.jpeg", class: "list__image"
-            .product_box__small_lists
-              .product_box__list
-                = image_tag "pict/a001.png", class: "list__image"
-              .product_box__list
-                = image_tag "pict/a004.png", class: "list__image"
+            = @product.name
+          .product_box__show_images
+            - @product.images.each do |image, i|
+              = image_tag image.image.url, class: "image-list"
           .product_price
-            ¥30
-            .product_price__detail
-              (税込)送料込み
-          .product__Detail
+            = "¥"
+            = @product.price
+          .product_price__detail
+            = @product.cost.name
+          .product__comment
             親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。
           .product_table
             %table
@@ -45,42 +43,42 @@
                 %th
                   出品者
                 %td
-                  hoge
+                  = @product.user.nickname
               %tr
                 %th
                   カテゴリー
                 %td
-                  = link_to "アウター",'/#'
+                  = link_to(@product.category.name)
               %tr
                 %th
                   ブランド
                 %td
-                  
+                  = @product.brand
               %tr
                 %th
                   商品のサイズ
                 %td
-                  
+                  = @product.size.name
               %tr
                 %th
                   商品の状態
                 %td
-                  未使用に近い
+                  = @product.state.name
               %tr
                 %th
                   配送料の負担
                 %td
-                  送料込み（出品者負担）
+                  = @product.cost.name
               %tr
                 %th
                   発送元の地域
                 %td
-                  = link_to "岩手県",'/#'
+                  = link_to(@product.region.name)
               %tr
                 %th
                   発送日の目安
                 %td
-                  4-7日で発送
+                  = @product.period.name
           .optionArea
             .optionArea__left
               %i.fa.fa-star お気に入り 0
@@ -88,12 +86,22 @@
               = link_to root_path do
                 %i.fa.fa-flag
                 不適切な商品の通報
+        -# ログインしているユーザーと出品したユーザーが一致しているかどうか
+        .btn-list
+          - if user_signed_in? && current_user.id == @product.user_id
+            .edit_btn
+              =link_to "この商品の情報を編集する","/products/#{@product.id}/edit", method: :get
+            .destroy_btn
+              =link_to "この商品の情報を削除する","/products/#{@product.id}", method: :delete, data: {confirm: "本当に削除しますか？"}
+          - else
+            .confirm-link
+              = link_to "この商品を購入する","/purchase/#{@product.id}", method: :get
         .commentBox
           = form_tag root_path do
             .commentContents
               %textarea.new_comment
               %p
-                相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となる事があります。
+                ※相手のことを考え丁寧なコメントを心がけましょう。<br>不快な言葉遣いなどは利用制限や退会処分となる事があります。
               %button{type: "submit", class: "comment_btn"}
                 %i.fa.fa-comment
                   コメントをする
@@ -103,17 +111,25 @@
       %li
         = link_to "後ろの商品 >",'/#'
     .relatedItems
-      = link_to "関連商品をもっと見る",'/#'
+      .related-link
+        = link_to "/products/#{@product.id}", method: :get do
+          = @product.category.name
+          = "をもっと見る"
+    .relatedlist
       .related_images
-        = link_to '/#' do
+        = link_to "/products/#{@product.id}", method: :get do
           .container__box__list
-            = image_tag "pict/IMG_9072.jpeg" , class: "list__image"
+            = image_tag @product.images[0].image.to_s, class: "list__image"
             .list__main
               .list__main__name
-                ee
+                = @product.name
               .list_details
                 %ul
-                  %li 1000円
+                  %li 
+                    = "¥"
+                    = @product.price
                   %li 
                     %i.fas.fa-star 0
                 %p (税込み)
+.wrapper
+  = render "footer_new"

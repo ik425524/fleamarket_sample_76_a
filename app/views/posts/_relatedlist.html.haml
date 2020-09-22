@@ -1,0 +1,18 @@
+.relatedlist
+  .related_images
+    - @product.each do |product|
+      = link_to product_path(id: product.id) do
+        .container__box__list
+          - ft_image = product.images.first
+          = image_tag ft_image.image.url, class: "list__image"
+          .list__main
+            .list__main__name
+              = product.name
+            .list_details
+              %ul
+                %li 
+                  = "¥"
+                  = product.price
+                %li 
+                  %i.fas.fa-star 0
+              %p (税込み)

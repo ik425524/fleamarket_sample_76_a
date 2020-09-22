@@ -94,66 +94,9 @@
     .container__box__head
       = link_to "新規投稿商品",'/#'
     .container__box__lists
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/beef.jpeg", class: "list__image"
-          .list__body
-            .list__body__name
-              テスト
-            .list__body__details
-              %ul
-                %li 10000円
-                %li 
-                  %i.fas.fa-star 1
-              %p (税込み)
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/IMG_9072.jpeg", class: "list__image"
-          .list__body
-            .list__body__name
-              ee
-            .list__body__details
-              %ul
-                %li 1000円
-                %li 
-                  %i.fas.fa-star 0
-              %p (税込み)
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/a007.png", class: "list__image"
-          .list__body
-            .list__body__name
-              product3
-            .list__body__details
-              %ul
-                %li 30000円
-                %li 
-                  %i.fas.fa-star 0
-              %p (税込み)
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/a004.png", class: "list__image"
-          .list__body
-            .list__body__name
-              product2
-            .list__body__details
-              %ul
-                %li 20000円
-                %li 
-                  %i.fas.fa-star 0
-              %p (税込み)
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/a001.png", class: "list__image"
-          .list__body
-            .list__body__name
-              product1
-            .list__body__details
-              %ul
-                %li 10000円
-                %li 
-                  %i.fas.fa-star 1
-              %p (税込み)
+      .wrapper
+        = render "relatedlist"
+     
               
 -# ピックアップブランド
 .pickup__container
@@ -163,63 +106,5 @@
     .container__box__head
       = link_to "アーカイバ",'/#'
     .container__box__lists
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/beef.jpeg", class: "list__image"
-          .list__body
-            .list__body__name
-              テスト
-            .list__body__details
-              %ul
-                %li 10000円
-                %li 
-                  %i.fas.fa-star 1
-              %p (税込み)
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/IMG_9072.jpeg", class: "list__image"
-          .list__body
-            .list__body__name
-              ee
-            .list__body__details
-              %ul
-                %li 1000円
-                %li 
-                  %i.fas.fa-star 0
-              %p (税込み)
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/a007.png", class: "list__image"
-          .list__body
-            .list__body__name
-              product3
-            .list__body__details
-              %ul
-                %li 30000円
-                %li 
-                  %i.fas.fa-star 0
-              %p (税込み)
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/a004.png", class: "list__image"
-          .list__body
-            .list__body__name
-              product2
-            .list__body__details
-              %ul
-                %li 20000円
-                %li 
-                  %i.fas.fa-star 0
-              %p (税込み)
-      = link_to '/#' do
-        .container__box__list
-          = image_tag "pict/a001.png", class: "list__image"
-          .list__body
-            .list__body__name
-              product1
-            .list__body__details
-              %ul
-                %li 10000円
-                %li 
-                  %i.fas.fa-star 1
-              %p (税込み)
+      .wrapper
+        = render "relatedlist"

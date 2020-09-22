@@ -70,7 +70,7 @@ README
 | column      | Type    | Options                        |
 | ----------- | ------- | ------------------------------ |
 | user_id     | string  | null: false, foregin_key: true |
-| costomer_id | integer | null: false                    |
+| customer_id | integer | null: false                    |
 | card_id     | integer | null: false                    |
 
 ## Association

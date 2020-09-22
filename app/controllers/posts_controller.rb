@@ -1,8 +1,5 @@
 class PostsController < ApplicationController
   def index
+    @product = Product.all
   end
-
-  def confirm
-  end
-
 end

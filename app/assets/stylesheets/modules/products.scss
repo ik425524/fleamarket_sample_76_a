@@ -62,21 +62,17 @@ a {
             width: 100%;
             height: 30px;
             line-height: 30px;
-            font-size: 20px;
+            font-size: 30px;
             font-weight: 700;
           }
 
+          // indexページでの商品画像表示
           &__images {
             margin-top: 20px;
 
-            .list__image {
+            .list__image { 
               max-width: 90%;
               height: auto;
-            }
-
-            &__main_image {
-              width: 500px;
-              height: 350px;
             }
 
             .product_box__small_lists {
@@ -90,14 +86,33 @@ a {
             }
           }
 
+          // showページでの商品画像表示
+          &__show_images {
+            margin-top: 20px;
+
+            .image-list{
+              width: 24%;
+              height: 130px;
+            }
+            .image-list:first-child{
+              width: 100%;
+              height: 400px;
+            }
+          }
+
           .product_price {
             font-size: 50px;
             font-weight: 700;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            list-style: none;
+          }
 
-            &__detail {
-              font-size: 20px;
-              margin-bottom: 20px;
-            }
+          .product_price__detail {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
           }
 
           &__Detail {
@@ -159,6 +174,57 @@ a {
           }
         }
 
+        // 購入・編集・削除ボタンcss
+        .btn-list {
+          width: 100%;
+          height: 50px;
+          display: flex;
+          justify-content: space-around;
+          text-align: center;
+
+          .edit_btn {
+            background-color: #3ccace;
+            width: 40%;
+            height: 50px;
+            line-height: 50px;
+            color: #ffffff;
+            border: 1px #3ccace solid;
+            border-radius: 100px;
+            font-size: 20px;
+            margin-top: 10px;
+          }
+
+          .destroy_btn {
+            background-color: red;
+            width: 40%;
+            height: 50px;
+            line-height: 50px;
+            color: #ffffff;
+            border: 1px #3ccace solid;
+            border-radius: 100px;
+            font-size: 20px;
+            margin-top: 10px;
+          }
+
+          .confirm-link {
+            background-color: red;
+            width: 60%;
+            height: 50px;
+            line-height: 50px;
+            color: #ffffff;
+            border: 1px #3ccace solid;
+            font-size: 20px;
+            margin-top: 10px;
+            border-radius: 100px;
+          }
+
+          a {
+            width: 100%;
+            height: 100%;
+            display: block;
+          }
+        }
+
         // コメント入力欄
         .commentBox {
           width: 100%;
@@ -196,7 +262,7 @@ a {
       }
     }
 
-    // その他商品へのリンク
+    // 関連カテゴリーへのリンク
     .links {
       display: block;
       width: 700px;
@@ -210,24 +276,37 @@ a {
 
     .relatedItems {
       width: 700px;
+      height: 50px;
+      font-size: 20px;
+      margin: 0 auto;
+      color: #3ccace;
+      text-align: start;
+
+      .related-link{
+        display: block;
+      }
+    }
+
+    // index,showページ下部の商品一覧css
+    .relatedlist{
+      width: 700px;
       height: 300px;
       font-size: 20px;
       margin: 0 auto;
       color: #3ccace;
       text-align: start;
 
+
       .related_images {
         width: 220px;
-        height: 200px;
         padding-top: 10px;
         color: black;
         font-size: 16px;
         text-align: center;
         padding-top: 20px;
+        display: flex;
 
         .container__box__list {
-          height: 300px;
-          width: 200px;
 
           .list__image {
             height: 150px;
@@ -345,5 +424,41 @@ a {
   &__img {
     width: 60%;
     vertical-align: bottom;
+  }
+}
+
+// 削除後のページ
+.destroy__contents{
+  background-color: #f8f8f8;
+
+  &__main{
+    width: 700px;
+    margin: 0 auto;
+    padding: 24px 40px 40px;
+    background-color: #ffffff;
+    text-align: center;
+
+    .message{
+      font-size: 20px;
+      height: 50px;
+    }
+
+    .root-btn{
+      background-color: #3ccace;
+      width: 40%;
+      height: 50px;
+      line-height: 50px;
+      color: #ffffff;
+      border: 1px #3ccace solid;
+      border-radius: 100px;
+      font-size: 20px;
+      margin: 10px auto;
+    }
+
+    a{
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
   }
 }

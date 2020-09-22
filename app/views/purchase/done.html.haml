@@ -1,0 +1,23 @@
+-# 商品購入後ページ
+.confirm__header
+  = link_to image_tag("logo/logo.png",class: "confirm__header__icon"),root_path
+  
+%h2 商品を購入しました
+%h2
+  = @product.name
+  = @product.price
+  円
+.btn__red 
+  = link_to "トップページに戻る",root_path
+
+.confirm__footer
+  .confirm__footer__texts
+    .confirm__footer__text
+      =link_to "プライバシーポリシー",'/#'
+    .confirm__footer__text
+      =link_to "FURIMA利用規約",'/#'
+    .confirm__footer__text
+      =link_to "特定商取引に関する表記",'/#'
+  = link_to image_tag("logo/logo-white.png",class: "confirm__footer__image"),root_path
+  .confirm__footer__end
+    ©FURIMA

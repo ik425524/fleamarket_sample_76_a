@@ -8,6 +8,8 @@ class Product < ApplicationRecord
   validates :name, presence: true, length: {maximum: 40}
   validates :description,:price,:category,:region,:state,:period,:cost,:size, presence: true 
   validates :images, presence: true
+  has_many :purchasers
+
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :region
