@@ -27,6 +27,12 @@ describe Product do
         product.valid?
         expect(product.errors[:price]).to include("can't be blank")
       end
+
+      it "priceが300以下であれば登録できないこと " do
+        product = build(:product, price: 299 )
+        product.valid?
+        expect(product.errors[:price]).to include("は300以上の値にしてください")
+      end
     end
       
     

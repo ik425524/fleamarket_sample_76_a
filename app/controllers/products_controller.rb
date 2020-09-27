@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_parents, only: [:new, :create, :edit]
-  before_action :set_product, only: [:destroy, :edit, :show]
+  before_action :set_product, only: [:destroy, :edit, :show, :update]
 
   def index
     @products = Product.includes(:images).order('created_at DESC')
@@ -42,6 +42,31 @@ class ProductsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
   end
+
+  def edit
+    @grandchild = Category.find(@product.category_id)
+    @child = @grandchild.parent
+    @parent = @child.parent
+  end
+
+  def update
+    if @product.update!(product_params)
+      redirect_to root_path, notice: '商品を編集しました'
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    if user_signed_in? && current_user.id == @product.user_id
+      if @product.destroy
+        redirect_to root_path, notice: '商品を削除しました'
+      else
+        render "show", alert: "削除に失敗しました"
+      end
+    end
+  end
+
 
   private
 

@@ -39,9 +39,11 @@ $(document).on('turbolinks:load', function(){
       })
       
       .done(function(data){
-        console.log
         $("#children_content").remove();
         $("#grandchildren_content").remove();
+
+        $("#child_category_form").remove();
+        $("#grandchild_category_form").remove();
         let insertHTML = '';
         data.forEach(function(child){
           insertHTML += build_Option(child);

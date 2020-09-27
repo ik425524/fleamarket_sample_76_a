@@ -16,10 +16,11 @@
         .confirm__item__name
           = @product.name
         .confirm__item__price
-          %span.tax 送料込み（税込み）
-          %span.price2 
+          %span.tax 
+            = @product.cost.name
+          %li.price2 
             = @product.price
-            円
+            = "円"
   .confirm__contents__section
     .confirm__contents__section__pay
       %span.payment 支払い金額

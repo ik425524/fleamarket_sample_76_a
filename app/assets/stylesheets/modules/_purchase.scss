@@ -1,5 +1,6 @@
 // 商品購入確認ページ
 .confirm__header {
+  background-color: #f8f8f8;
   align-items: center;
   display: flex;
   height: 56px;
@@ -11,17 +12,20 @@
   }
 }
 .confirm__contents {
+  background-color: #f8f8f8;
   &__section {
-    max-width: 375px;
+    background-color: #fff;
+    width: 600px;
     margin: 0px auto;
     padding: 24px 16px;
-    border-top: 1px solid rgb(245, 245, 245);
+    border-top: 1px solid #f8f8f8;;
 
     &__title {
+      width: 100%;
+      margin: 0 auto;
       display: block;
-      text-align: center;
-      font-size: 17px;
-      font-weight: 600;
+      font-size: 30px;
+      font-weight: 700;
     }
   }
   .confirm__contents__section {
@@ -29,11 +33,10 @@
       display: flex;
       justify-content: space-between;
 
-      .confirm__section__image {
-        height: 80px;
-        width: 80px;
-        object-fit: cover;
+      img{
+        max-width: 50%;
       }
+
       .items-box_photo__sold {
         width: 0;
         height: 0;
@@ -43,7 +46,7 @@
         border-left: 60px solid #ea352d;
         z-index: 100;
         position: relative;
-        left: -100px;
+        left: -285px;
         &__inner {
           transform: rotate(-45deg);
           font-size: 28px;
@@ -55,28 +58,28 @@
       }
       .confirm__section__right {
         width: 100%;
-        margin-left: 16px;
+        margin-left: 10px;
 
         .confirm__item__name {
-          font-size: 14px;
+          font-size: 20px;
           margin-bottom: 8px;
+          text-align: center;
         }
         .confirm__item__price {
-          text-align: right;
+          text-align: center;
 
           .tax {
-            font-size: 12px;
+            font-size: 20px;
           }
           .price2 {
-            font-size: 15px;
+            list-style: none;
+            font-size: 20px;
             margin-left: 8px;
             font-weight: 600;
           }
         }
       }
     }
-  }
-  .confirm__contents__section {
     &__pay {
       display: flex;
       font-size: 18px;
@@ -89,8 +92,6 @@
         font-size: 24px;
       }
     }
-  }
-  .confirm__contents__section {
     .confirm__payment__text {
       margin-bottom: 16px;
       font-size: 14px;
@@ -102,8 +103,6 @@
       align-items: center;
       font-size: 14px;
     }
-  }
-  .confirm__contents__section {
     .buy__btn {
       &__request {
         color: rgb(255, 2, 17);

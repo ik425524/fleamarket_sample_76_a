@@ -354,52 +354,77 @@ a {
       display: flex;
       overflow: scroll;
 
-      .relatedlist{
-        width: 700px;
-        height: 300px;
-        font-size: 20px;
-        margin: 0 auto;
-        color: #3ccace;
-        text-align: start;
-  
-  
-        .related_images {
+      .container__box__list {
+        width: 220px;
+
+        .list__image {
           width: 220px;
-          padding-top: 10px;
-          color: black;
-          font-size: 16px;
-          text-align: center;
-          padding-top: 20px;
-          display: flex;
+          height: 150px;
+          object-fit: cover;
+        }
+        .items-box_photo__sold {
+          width: 0;
+          height: 0;
+          border-top: 35px solid #ea352d;
+          border-right: 35px solid transparent;
+          border-bottom: 35px solid transparent;
+          border-left: 35px solid #ea352d;
+          position: relative;
+          top: -154px;
+          left: 0px;
 
-          .container__box__list {
-            width: 220px;
+          &__inner {
+            transform: rotate(-45deg);
+            font-size: 15px;
+            margin: -25px -25px 0px -45px;
+            color: #fff;
+            letter-spacing: 2px;
+            font-weight: 400;
+          }
+        }
+        .list__body {
+          background-color: white;
+          color: #333;
+          padding: 16px;
+          z-index: 100;
+          position: relative;
+          top: -70px;
+          left: 0px;
 
-            .list__image {
-              width: 220px;
-              height: 150px;
-              object-fit: cover;
-            }
-            .list__body {
-              background-color: white;
-              color: #333;
-              padding: 16px;
+          &__name {
+            overflow: hidden;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          p {
+            font-size: 10px;
+            text-align: left;
+          }
+        }
 
-              &__name {
-                overflow: hidden;
-                line-height: 1.5;
-                font-size: 16px;
-              }
-              ul {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-              }
-              p {
-                font-size: 10px;
-                text-align: left;
-              }
-            }
+        .list__main {
+          background-color: white;
+          padding: 16px;
+          color: #333;
+
+          &__name {
+            overflow: hidden;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          p {
+            font-size: 10px;
+            text-align: left;
           }
         }
       }

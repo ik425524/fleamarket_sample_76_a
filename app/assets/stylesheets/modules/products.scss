@@ -70,7 +70,7 @@ a {
           &__images {
             margin-top: 20px;
 
-            .list__image { 
+            .list__image {
               max-width: 90%;
               height: auto;
             }
@@ -90,13 +90,32 @@ a {
           &__show_images {
             margin-top: 20px;
 
-            .image-list{
+            .image-list {
               width: 24%;
               height: 130px;
             }
-            .image-list:first-child{
+            .image-list:first-child {
               width: 100%;
               height: 400px;
+            }
+            .items-box_photo__sold {
+              width: 0;
+              height: 0;
+              border-top: 80px solid #ea352d;
+              border-right: 80px solid transparent;
+              border-bottom: 80px solid transparent;
+              border-left: 80px solid #ea352d;
+              z-index: 100;
+              position: relative;
+              top: -405px;
+              &__inner {
+                transform: rotate(-45deg);
+                font-size: 28px;
+                margin: -35px 0px 0px -55px;
+                color: #fff;
+                letter-spacing: 2px;
+                font-weight: 400;
+              }
             }
           }
 
@@ -177,33 +196,36 @@ a {
         // 購入・編集・削除ボタンcss
         .btn-list {
           width: 100%;
-          height: 50px;
-          display: flex;
-          justify-content: space-around;
-          text-align: center;
+          height: 100px;
 
-          .edit_btn {
-            background-color: #3ccace;
-            width: 40%;
-            height: 50px;
-            line-height: 50px;
-            color: #ffffff;
-            border: 1px #3ccace solid;
-            border-radius: 100px;
-            font-size: 20px;
-            margin-top: 10px;
-          }
+          .btns{
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
 
-          .destroy_btn {
-            background-color: red;
-            width: 40%;
-            height: 50px;
-            line-height: 50px;
-            color: #ffffff;
-            border: 1px #3ccace solid;
-            border-radius: 100px;
-            font-size: 20px;
-            margin-top: 10px;
+            .edit_btn {
+              background-color: #3ccace;
+              width: 40%;
+              height: 50px;
+              line-height: 50px;
+              color: #ffffff;
+              border: 1px #3ccace solid;
+              border-radius: 100px;
+              font-size: 20px;
+              margin-top: 10px;
+            }
+
+            .destroy_btn {
+              background-color: red;
+              width: 40%;
+              height: 50px;
+              line-height: 50px;
+              color: #ffffff;
+              border: 1px #3ccace solid;
+              border-radius: 100px;
+              font-size: 20px;
+              margin-top: 10px;
+            }
           }
 
           .confirm-link {
@@ -216,6 +238,25 @@ a {
             font-size: 20px;
             margin-top: 10px;
             border-radius: 100px;
+            margin: 0 auto;
+            }
+
+          .registration__btn{
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+        
+            &__list{
+              background-color: #3ccace;
+              color: #ffffff;
+              border: 1px #3ccace solid;
+              width: 300px;
+              height: 50px;
+              line-height: 50px;
+              border-radius: 100px;
+              text-align: center;
+              font-size: 20px;
+            }
           }
 
           a {
@@ -223,6 +264,12 @@ a {
             height: 100%;
             display: block;
           }
+        }
+
+        .comment_index{
+          padding: 30px;
+          width: 100%;
+          height: 100px;
         }
 
         // コメント入力欄
@@ -282,20 +329,19 @@ a {
       color: #3ccace;
       text-align: start;
 
-      .related-link{
+      .related-link {
         display: block;
       }
     }
 
     // index,showページ下部の商品一覧css
-    .relatedlist{
+    .relatedlist {
       width: 700px;
       height: 300px;
       font-size: 20px;
       margin: 0 auto;
       color: #3ccace;
       text-align: start;
-
 
       .related_images {
         width: 220px;
@@ -307,7 +353,6 @@ a {
         display: flex;
 
         .container__box__list {
-
           .list__image {
             height: 150px;
             width: 200px;
@@ -428,22 +473,22 @@ a {
 }
 
 // 削除後のページ
-.destroy__contents{
+.destroy__contents {
   background-color: #f8f8f8;
 
-  &__main{
+  &__main {
     width: 700px;
     margin: 0 auto;
     padding: 24px 40px 40px;
     background-color: #ffffff;
     text-align: center;
 
-    .message{
+    .message {
       font-size: 20px;
       height: 50px;
     }
 
-    .root-btn{
+    .root-btn {
       background-color: #3ccace;
       width: 40%;
       height: 50px;
@@ -455,7 +500,7 @@ a {
       margin: 10px auto;
     }
 
-    a{
+    a {
       width: 100%;
       height: 100%;
       display: block;

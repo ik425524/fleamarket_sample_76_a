@@ -1,14 +1,31 @@
-.relatedlist
-  .related_images
-    - @product.each do |product|
+.container__box__lists
+  - @product.each do |product|
+    .container__box__list
       = link_to product_path(id: product.id) do
-        .container__box__list
+        -if product.purchasers.present? 
+          - ft_image = product.images.first
+          = image_tag ft_image.image.url, class: "list__image"
+          .items-box_photo__sold
+            .items-box_photo__sold__inner
+              SOLD
+          .list__body
+            .list__body__name
+              = product.name
+            .list__body__details
+              %ul
+                %li 
+                  = "¥"
+                  = product.price
+                %li 
+                  %i.fas.fa-star 0
+              %p (税込み)
+        - else
           - ft_image = product.images.first
           = image_tag ft_image.image.url, class: "list__image"
           .list__main
             .list__main__name
               = product.name
-            .list_details
+            .list__body__details
               %ul
                 %li 
                   = "¥"

@@ -1,23 +1,38 @@
 .new__header
   .new__icon
-    = link_to new_product_path, method: :get do
-      = image_tag('logo/logo.png',class: 'icon-image')
+    = link_to image_tag('logo/logo.png',class: 'icon-image')
 .main-new
   .product-content
-    = form_with model: @product, class: "form" do |f|
+    = form_with model: @product, class: "form", id: "product-form-edit", local: true do |f|
+      = render 'layouts/error_messages', model: f.object
       .product-content__image
         .image-title
           = f.label :出品画像
           %span.required 必須
           .form-image__text 最大5枚までアップロードできます
-          = f.fields_for :images do |i|
+          #image-edit_box.edit-preview
+            - @product.images.each_with_index do |image, index|
+              - if @product.persisted?
+                .image-preview_box{data: {index: index}}
+                  .wrapper-box
+                    = image_tag image.image.url,data: {index: index}, width: "110", height: "130", class: "pre-image"
+                  .lower-box
+                    .edit-box 編集
+                    .update-delete_box 削除
+          .edit-file
             .cleafix
               %ul#previews
                 %li.input
                   %label.upload-label
                     %p クリックしてファイルをアップロード
-                    .input-area
-                      = i.file_field :image, class: "hidden image_upload"
+                    - if @product.persisted?
+                      .add-area
+                        = file_field_tag :image, name: "product[images_attributes][#{@product.images.count}][image]", data: {index: @product.images.count }, class: 'edit-upload add-upload'
+                    = f.fields_for :images do |image|
+                      .input-area{data: {index: image.index}}
+                        = image.file_field :image, class: "edit-upload"
+                        = image.check_box :_destroy, data: {index: image.index}, class: "hidden-destroy"
+                    .edit-area
       .product-content__info
         .info-name
           .name
@@ -40,15 +55,17 @@
             =f.label :カテゴリー
             %span.required 必須
             #category_content.category-form
-              = f.collection_select :category_id, @category_parents, :id, :name, { include_blank: "選択してください", selected:"" }, id: "category_form", class: "form-text"
+              = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name,{prompy:'選択してください', selected: @parent.id}, {id: "category_form", class: "form-text"}
             #children-box.category-form 
+              = f.collection_select :category_id, Category.where(ancestry: "#{@parent.id}"), :id, :name,{prompy:'選択してください', selected: @child.id},{id: "child_category_form", class: "form-text"}
             #grandchildren-box.category-form 
+              = f.collection_select :category_id, Category.where(ancestry: "#{@parent.id}/#{@child.id}"), :id, :name,{prompy:'選択してください', selected: @grandchild.id},{id: "grandchild_category_form", class: "form-text"}
         .size
           .size-select
             = f.label :サイズ
             %span.required 必須
           .size-form
-            = f.collection_select :size_id, Size.all, :id, :name, { include_blank: "選択してください",selected:""}, class: "form-text"
+            = f.collection_select :size_id, Size.all, :id, :name, { include_blank: "選択してください"}, class: "form-text"
         .brand
           .brand-name
             =f.label :ブランド
@@ -61,7 +78,7 @@
             %span.required 必須
           .state-form
             = f.collection_select :state_id, State.all, :id, :name, {include_blank: "選択してください"} ,class: "form-text"
-      .product-content__send
+        .product-content__send
         %p 配送について
         <br>
         .cost
@@ -92,19 +109,9 @@
           .price-form
             %span ¥
             = f.number_field :price, placeholder: "0", class: "price-number"
-      .btn-list
-        - if user_signed_in?
-          .send-btn
-            = f.submit '出品する', class: "send-btn__form"
-            = link_to 'トップにもどる', root_path, class: "send-btn__back"
-        - else
-          %p
-            ※商品を出品するにはアカウント登録またはログインが必要です。
-          .registration__btn
-            .registration__btn__list
-              =link_to "ログイン",new_user_session_path, method: :get
-            .registration__btn__list
-              =link_to "新規会員登録",new_user_registration_path, method: :get
+      .send-btn
+        = f.submit '編集する', class: "send-btn__form"
+        = link_to 'もどる', root_path, class: "send-btn__back"
       .attention
         %p 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 .footer_new

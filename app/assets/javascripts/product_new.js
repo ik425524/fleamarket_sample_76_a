@@ -2,12 +2,13 @@ $(document).on('turbolinks:load', function(){
 
   $(document).on('click', '.image_upload', function(){
 
-    let preview = $('<div class="preview_box"><div class="upper-box"><img class="preview"></div><div class="lower-box"><div class="delete-box">削除</div></div></div>'); 
+    let preview = $('<div class="image-preview_box"><div class="wrapper-box"><img class="preview"></div><div class="lower-box"><div class="delete-box">削除</div></div></div>'); 
   
     function append_input(num){
       let  html = $(`<li class="input"><label class="upload-label"><div class="input-area"><input class="hidden image_upload" type="file" name="product[images_attributes][${num}][image]" id = "product_images_attributes_${num}_image"></div></div></label></li>`);
       return html;
     }
+
 
     $ul = $('#previews')
     $li = $(this).parents('li');
@@ -18,10 +19,8 @@ $(document).on('turbolinks:load', function(){
 
       let reader = new FileReader();
       
-      // プレビューに追加させるために、inputから画像ファイルを読み込む。
       reader.readAsDataURL(e.target.files[0]);
-
-      //画像ファイルが読み込んだら、処理が実行される。 
+ 
       reader.onload = function(e){
 
         $(preview).find('.preview').attr('src', e.target.result);
@@ -34,7 +33,7 @@ $(document).on('turbolinks:load', function(){
       $li.addClass('image-preview'); 
       $lis = $ul.find('.image-preview'); 
       $('#previews li').css({
-        'width': `100px`
+        'width': `110px`
       })
 
 
@@ -62,7 +61,7 @@ $(document).on('turbolinks:load', function(){
   })
 
   $(document).on('click','.delete-box',function(){
-    let append_input = $(`<li class="input"><label class="upload-label"><div class="input-area"><input class="hidden image_upload" type="file" ></div></div></label></li>`)
+
     $ul = $('#previews')
     $lis = $ul.find('.image-preview');
     $input = $ul.find('.input');
@@ -78,7 +77,7 @@ $(document).on('turbolinks:load', function(){
       $('#previews li:last-child').css({
         'width': `calc(100% - (20% * ${$lis.length}))`
       })
-      // $ul.append(append_input)
+
     }
     else if($lis.length == 5 ){
       $('#previews li:last-child').css({

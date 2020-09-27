@@ -110,25 +110,58 @@
   display: flex;
 }
 
-.send-btn {
-  width: 360px;
-  margin: 0 auto;
-  &__form {
-    color: white;
-    background-color: red;
-    border: 1px solid #ccc;
-    width: 100%;
-    font-size: 17px;
-    min-height: 48px;
-    padding: 0 24px;
+// 出品するボタン,user新規登録,ログインボタン
+.btn-list{
+  text-align: center;
+  font-size: 20px;
+
+  .send-btn {
+    width: 360px;
+    margin: 0 auto;
+
+    &__form {
+      color: white;
+      background-color: red;
+      border: 1px solid #ccc;
+      width: 100%;
+      font-size: 17px;
+      min-height: 48px;
+      padding: 0 24px;
+      cursor: pointer;
+    }
+    &__back {
+      background-color: #ccc;
+      text-align: center;
+      line-height: 50px;
+      display: block;
+      width: 100%;
+      height: 50px;
+      color: blue;
+      margin-top: 30px;
+    }
   }
-  &__back {
-    text-align: center;
-    display: block;
-    width: 100%;
-    height: 20px;
-    color: blue;
-    margin-top: 30px;
+  .registration__btn{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+
+    &__list{
+      background-color: #3ccace;
+      color: #ffffff;
+      border: 1px #3ccace solid;
+      width: 40%;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 100px;
+      text-align: center;
+      font-size: 20px;
+
+      a{
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+    }
   }
 }
 
@@ -180,19 +213,28 @@
   flex-wrap: wrap;
 }
 
-//画像表示欄のCSS
+.pre-image {
+  width: 110px;
+  height: 130px;
+}
 
 .preview{
-  width: 100px;
-  height: 125px;
+  width: 110px;
+  height: 130px;
+}
+
+.pre-image2{
+  width: 110px;
+  height: 160px;
 }
 
 .lower-box {
   display: flex;
   text-align: center;
-  .delete-box {
+  width: 110px;
+  .edit-box {
     color: #00b0ff;
-    width: 100px;
+    width: 50%;
     height: 40px;
     line-height: 40px;
     border: 1px solid #eee;
@@ -201,6 +243,25 @@
   }
 }
 
+.delete-box {
+  color: #00b0ff;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #eee;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+.update-delete_box {
+  color: #00b0ff;
+  width: 50%;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #eee;
+  background: #f5f5f5;
+  cursor: pointer;
+}
 
 //投稿クリックエリアのCSS
 .label-content{
@@ -219,46 +280,67 @@
 
 .prev-content{
   display: flex;
-  .preview_box {
-    height: 162px;
-    width: 112px;
-    margin: 0 15px 10px 0;
-    .upper-box {
-      height: 120px;
-      width: 100%;
-    }
-  }
 }
 
+.wrapper-box {
+  height: 130px;
+  width: 120px;
+}
 
-input{
+.image-preview{
+  height: 162px;
+  width: 120px;
+  margin: 0 5px;
+}
+
+.image-preview_box{
+  margin-left: 5px;
+}
+
+#previews{
   width: 100%;
+  display: flex;
+  padding-top:8px;
+}
+
+.input{
   border: 1px solid #ccc;
   box-sizing: border-box;
   height: 48px;
   margin: 0;
   padding: 0 16px;
-}
-
-#previews{
-  display: flex;
-  flex-wrap: wrap;
-}
-
-li.input{
-  width: 100%;
-  height: 160px;
+  width: 620px;
+  height: 170px;
   background-color: #ccc;
   border: 1px solid silver;
   position: relative;
-  .upload-label{
-    display: block;
-    float: left;
-    width: 100%;
-    height: 100%;
-    .input-area{
-      display: none;
-    }
-  }
+}
+
+.upload-label{
+  display: block;
+  float: left;
+  width: 100%;
+  height: 100%;
+}
+
+.input-area{
+  display: none;
+}
+
+.edit-preview{
+  width: 100%;
+  display: flex;
+}
+
+.hidden-destroy{
+  display: none;
+}
+
+.edit-upload{
+  display: none;
+}
+
+.add-upload{
+    display: none;
 }
 
